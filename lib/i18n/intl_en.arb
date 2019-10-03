@@ -1,0 +1,72 @@
+{
+  "appName": "NeusFeet",
+  "@appName": {
+    "description": "Application name",
+    "type": "text"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home tab",
+    "type": "text"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search tab",
+    "type": "text"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings tab",
+    "type": "text"
+  },
+  "bookmarks": "Bookmarks",
+  "@bookmarks": {
+    "description": "Bookmarks tab",
+    "type": "text"
+  },
+  "searchHint": "Search news…",
+  "@searchHint": {
+    "description": "Search hint",
+    "type": "text"
+  },
+  "readArticle": "Read article",
+  "@readArticle": {
+    "description": "Read article button",
+    "type": "text"
+  },
+  "emptyArticles": "Nothing to show…",
+  "@emptyArticles": {
+    "description": "Empty view text",
+    "type": "text"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Category tab",
+    "type": "text"
+  },
+  "country": "Country",
+  "@country": {
+    "description": "Country tab",
+    "type": "text"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language tab",
+    "type": "text"
+  },
+  "openInBrowser": "Open in browser",
+  "@openInBrowser": {
+    "description": "Open in browser button",
+    "type": "text"
+  },
+  "bookmarkAdded": "Bookmark added!",
+  "@bookmarkAdded": {
+    "description": "Bookmark added message",
+    "type": "text"
+  },
+  "bookmarkRemoved": "Bookmark removed!",
+  "@bookmarkRemoved": {
+    "description": "Bookmark removed message",
+    "type": "text"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "appName": "NeusFeet",
+  "@appName": {
+    "description": "Application name",
+    "type": "text"
+  },
+  "home": "Домашняя",
+  "@home": {
+    "description": "Home tab",
+    "type": "text"
+  },
+  "search": "Поиск",
+  "@search": {
+    "description": "Search tab",
+    "type": "text"
+  },
+  "settings": "Настройки",
+  "@settings": {
+    "description": "Settings tab",
+    "type": "text"
+  },
+  "bookmarks": "Закладки",
+  "@bookmarks": {
+    "description": "Bookmarks tab",
+    "type": "text"
+  },
+  "searchHint": "Поиск новостей…",
+  "@searchHint": {
+    "description": "Search hint",
+    "type": "text"
+  },
+  "readArticle": "Прочитать статью",
+  "@readArticle": {
+    "description": "Read article button",
+    "type": "text"
+  },
+  "emptyArticles": "Нечего показать…",
+  "@emptyArticles": {
+    "description": "Empty view text",
+    "type": "text"
+  },
+  "category": "Категория",
+  "@category": {
+    "description": "Category tab",
+    "type": "text"
+  },
+  "country": "Страна",
+  "@country": {
+    "description": "Country tab",
+    "type": "text"
+  },
+  "language": "Язык",
+  "@language": {
+    "description": "Language tab",
+    "type": "text"
+  },
+  "openInBrowser": "Открыть в браузере",
+  "@openInBrowser": {
+    "description": "Open in browser button",
+    "type": "text"
+  },
+  "bookmarkAdded": "Добавлено в закладки",
+  "@bookmarkAdded": {
+    "description": "Bookmark added message",
+    "type": "text"
+  },
+  "bookmarkRemoved": "Удалено из закладок",
+  "@bookmarkRemoved": {
+    "description": "Bookmark removed message",
+    "type": "text"
+  }
+}

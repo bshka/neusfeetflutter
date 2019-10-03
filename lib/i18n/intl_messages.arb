@@ -1,0 +1,87 @@
+{
+  "@@last_modified": "2019-10-02T14:06:41.340871",
+  "appName": "NeusFeet",
+  "@appName": {
+    "description": "Application name",
+    "type": "text",
+    "placeholders": {}
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Search tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "bookmarks": "Bookmarks",
+  "@bookmarks": {
+    "description": "Bookmarks tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchHint": "Search news…",
+  "@searchHint": {
+    "description": "Search hint",
+    "type": "text",
+    "placeholders": {}
+  },
+  "readArticle": "Read article",
+  "@readArticle": {
+    "description": "Read article button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "emptyArticles": "Nothing to show…",
+  "@emptyArticles": {
+    "description": "Empty view text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Category tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "country": "Country",
+  "@country": {
+    "description": "Country tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "openInBrowser": "Open in browser",
+  "@openInBrowser": {
+    "description": "Open in browser button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "bookmarkAdded": "Bookmark added!",
+  "@bookmarkAdded": {
+    "description": "Bookmark added message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "bookmarkRemoved": "Bookmark removed!",
+  "@bookmarkRemoved": {
+    "description": "Bookmark removed message",
+    "type": "text",
+    "placeholders": {}
+  }
+}
