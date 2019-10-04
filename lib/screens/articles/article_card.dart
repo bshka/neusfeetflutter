@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nues_feet_flutter/model/article_model.dart';
 import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
+import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
 
 import 'boormark_button.dart';
@@ -20,7 +24,8 @@ class ArticleCard extends StatelessWidget {
       child: InkResponse(
         onTap: onTap,
         child: Card(
-          elevation: 2,
+          elevation: Platform.isIOS ? 2 : 2,
+          borderOnForeground: true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(8),
@@ -30,10 +35,17 @@ class ArticleCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              FadeInImage.assetNetwork(
-                height: 190,
-                placeholder: 'images/placeholder.jpg',
-                image: article.urlToImage ?? '',
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
+                ),
+                child: FadeInImage.assetNetwork(
+                  height: 190,
+                  placeholder: Images.kPlaceholder,
+                  image: article.urlToImage ?? '',
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -45,6 +57,8 @@ class ArticleCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             article.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: Styles.kTextMedium.copyWith(
                               color: Colors.kBlack,
                               fontSize: 18,

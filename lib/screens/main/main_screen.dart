@@ -92,10 +92,14 @@ class _MainScreeniOS extends StatelessWidget {
           items: _getBottomBarItems(context),
         ),
         tabBuilder: (context, index) {
-          return CupertinoPageScaffold(
-            child: SafeArea(
-              child: _getScreenWidget(index),
-            ),
+          return CupertinoTabView(
+            builder: (context) {
+              return CupertinoPageScaffold(
+                child: SafeArea(
+                  child: _getScreenWidget(index),
+                ),
+              );
+            },
           );
         },
       ),

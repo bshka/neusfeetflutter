@@ -10,7 +10,7 @@ class Article {
   final String url;
   final String content;
 
-  Article(
+  const Article(
       {this.localId,
       this.publishedAt,
       this.author,
