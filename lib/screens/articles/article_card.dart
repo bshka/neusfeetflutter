@@ -56,7 +56,7 @@ class ArticleCard extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Text(
-                            article.title,
+                            article.title ?? '',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: Styles.kTextMedium.copyWith(
@@ -103,7 +103,7 @@ class ArticleCard extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      article.description,
+                      article.description ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.kTextLight.copyWith(
