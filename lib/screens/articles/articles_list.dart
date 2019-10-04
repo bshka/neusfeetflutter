@@ -3,9 +3,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nues_feet_flutter/main.dart';
 import 'package:nues_feet_flutter/model/article_model.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart' as Api;
 import 'package:nues_feet_flutter/network/use_case_headlines.dart';
+import 'package:nues_feet_flutter/screens/article_preview_screen.dart';
 import 'package:nues_feet_flutter/screens/articles/article_card.dart';
 import 'package:provider/provider.dart';
 
@@ -84,9 +86,13 @@ class ArticlesList extends StatelessWidget {
     if (position == holder.articles.length - 10) {
       holder.loadMore();
     }
+    final article = holder.articles[position];
     return ArticleCard(
-      holder.articles[position],
-      onTap: () {},
+      article,
+      onTap: () {
+        NavigationProvider.of(context)
+            .openScreen(context, ArticlePreviewScreen(article));
+      },
       onBookmark: () {},
     );
   }

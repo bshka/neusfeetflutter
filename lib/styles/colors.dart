@@ -4,6 +4,8 @@ const Color kPrimary = kAzureRadiance;
 const Color kPrimaryDark = kMartini;
 const Color kAccent = kAzureRadiance;
 
+const Color kTransparent = Colors.transparent;
+const Color kWhite = Colors.white;
 const Color kMartini = Color(0xFF9B9B9B);
 const Color kAzureRadiance = Color(0xFF0076FF);
 const Color kAlabaster = Color(0xFFFAFAFA);
