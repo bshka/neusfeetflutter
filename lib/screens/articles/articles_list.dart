@@ -1,5 +1,7 @@
 import 'dart:collection';
+import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/model/article_model.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart' as Api;
@@ -8,34 +10,84 @@ import 'package:nues_feet_flutter/screens/articles/article_card.dart';
 import 'package:provider/provider.dart';
 
 class ArticlesList extends StatelessWidget {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ArticlesListProvider>(
       builder: (context, holder, child) {
-        return ListView.builder(
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemBuilder: (context, position) {
-            // pagination
-            if (position == holder.articles.length - 10) {
-              holder.loadMore();
-            }
-
-            if (position == 0) {
-              return RefreshIndicator(
-                child: null,
-                onRefresh: null,
-              );
-            } else {
-              return ArticleCard(
-                holder.articles[position],
-                onTap: () {},
-                onBookmark: () {},
-              );
-            }
-          },
-          itemCount: holder.articles.length,
-        );
+        if (holder.articles.length == 0) {
+          return Center(
+            child: Platform.isIOS
+                ? CupertinoActivityIndicator()
+                : CircularProgressIndicator(),
+          );
+        } else {
+          return Platform.isIOS
+              ? _iOSListView(holder)
+              : _androidListView(holder);
+        }
       },
+    );
+  }
+
+  Widget _androidListView(ArticlesListProvider holder) {
+    return RefreshIndicator(
+      key: _refreshIndicatorKey,
+      onRefresh: () => holder.refresh(),
+      child: ListView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
+        itemBuilder: (context, position) {
+          return _itemBuilder(
+            holder: holder,
+            context: context,
+            position: position,
+          );
+        },
+        itemCount: holder.articles.length,
+      ),
+    );
+  }
+
+  Widget _iOSListView(ArticlesListProvider holder) {
+    return CustomScrollView(
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      slivers: <Widget>[
+        CupertinoSliverRefreshControl(
+          refreshTriggerPullDistance: 150,
+          onRefresh: () => holder.refresh(),
+        ),
+        SliverSafeArea(
+          top: false,
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, position) {
+                return _itemBuilder(
+                  holder: holder,
+                  context: context,
+                  position: position,
+                );
+              },
+              childCount: holder.articles.length,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _itemBuilder(
+      {ArticlesListProvider holder, BuildContext context, int position}) {
+    // pagination
+    if (position == holder.articles.length - 10) {
+      holder.loadMore();
+    }
+    return ArticleCard(
+      holder.articles[position],
+      onTap: () {},
+      onBookmark: () {},
     );
   }
 }
@@ -84,6 +136,7 @@ class ArticlesListProvider with ChangeNotifier {
   }
 
   Future<void> refresh() {
+    print('refresh called');
     _canLoadMore = true;
     _page = 1;
     return _loadData();
