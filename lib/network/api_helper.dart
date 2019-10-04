@@ -5,6 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:nues_feet_flutter/model/article_model.dart';
 
 class ApiHelper {
+
+  static final ApiHelper _singleton = ApiHelper._internal();
+
   static const String _kBaseUrl = 'https://newsapi.org/v2/';
   static const _kHeaders = {'X-Api-Key': '8bdf9a3615c141da90ff71d9ce4ea6ad'};
 
@@ -48,6 +51,10 @@ class ApiHelper {
     }
     return result;
   }
+
+  ApiHelper._internal();
+  factory ApiHelper() => _singleton;
+
 }
 
 class Result<T> {
