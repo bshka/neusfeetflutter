@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:collection';
 import 'dart:io';
 
@@ -6,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/main.dart';
 import 'package:nues_feet_flutter/model/article_model.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart' as Api;
-import 'package:nues_feet_flutter/network/use_case_headlines.dart';
+import 'package:nues_feet_flutter/network/use_case_load_articles.dart';
 import 'package:nues_feet_flutter/screens/article_preview_screen.dart';
 import 'package:nues_feet_flutter/screens/articles/article_card.dart';
 import 'package:provider/provider.dart';
+import 'package:stream_transform/stream_transform.dart';
 
 class ArticlesList extends StatelessWidget {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
@@ -100,15 +102,32 @@ class ArticlesList extends StatelessWidget {
 
 class ArticlesListProvider with ChangeNotifier {
   List<Article> _articles = [];
-  final LoadHeadlinesUseCase _useCase;
+  final LoadArticlesUseCase _useCase;
   int _page = 1;
   bool _canLoadMore = true;
   bool _isLoading = false;
+  String _query;
+  var _searchController = StreamController<String>();
 
   UnmodifiableListView<Article> get articles => UnmodifiableListView(_articles);
 
   ArticlesListProvider(this._useCase) {
     _loadData();
+
+    // search debounce
+    debounce(
+      Duration(milliseconds: 500),
+    ).bind(_searchController.stream).listen(
+      (query) {
+        print('Search text input: $query');
+        _query = query;
+        refresh();
+      },
+      cancelOnError: false,
+      onError: (error) {
+        print(error);
+      },
+    );
   }
 
   void add(List<Article> articles) {
@@ -121,7 +140,7 @@ class ArticlesListProvider with ChangeNotifier {
   Future<void> _loadData() async {
     _isLoading = true;
 
-    Api.Result result = await _useCase.load(page: _page);
+    Api.Result result = await _useCase.load(page: _page, query: _query);
     if (result is Api.Success<List<Article>>) {
       _articles.addAll(result.value);
       notifyListeners();
@@ -145,6 +164,17 @@ class ArticlesListProvider with ChangeNotifier {
     print('refresh called');
     _canLoadMore = true;
     _page = 1;
+    _articles.clear();
     return _loadData();
+  }
+
+  void search(String query) {
+    _searchController.add(query);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _searchController.close();
   }
 }

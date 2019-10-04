@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:nues_feet_flutter/model/article_model.dart';
 
 class ApiHelper {
-
   static final ApiHelper _singleton = ApiHelper._internal();
 
   static const String _kBaseUrl = 'https://newsapi.org/v2/';
@@ -13,7 +12,7 @@ class ApiHelper {
 
   static const HTTP_OK = 200;
 
-  Future getHeadlines(
+  Future<Result<List<Article>>> getHeadlines(
       {int page = 1, int pageSize = 20, String query, String sources}) async {
     try {
 //      http.Response result = await http.get(
@@ -22,6 +21,8 @@ class ApiHelper {
       http.Response result = await http.get(
           '${_kBaseUrl}top-headlines?page=$page&pageSize=$pageSize&q=trump',
           headers: _kHeaders);
+
+      print(result.request.url);
 
       if (result.statusCode == HTTP_OK) {
         return Result.success(_parseArticles(jsonDecode(result.body)));
@@ -38,8 +39,33 @@ class ApiHelper {
     }
   }
 
-//  Future<Result> getEverything(
-//      {int page = 1, int pageSize = 20, String query, String sources}) async {}
+  Future<Result<List<Article>>> getEverything(
+      {int page = 1, int pageSize = 20, String query, String sources}) async {
+    try {
+//      http.Response result = await http.get(
+//          '${_kBaseUrl}top-headlines?page=$page&pageSize=$pageSize&q=query&sources=$sources',
+//          headers: _kHeaders);
+      http.Response result = await http.get(
+          '${_kBaseUrl}everything?page=$page&pageSize=$pageSize&q=${query == null || query.isEmpty ? 'trump' : query}',
+          headers: _kHeaders);
+
+      print(result.request.url);
+
+      if (result.statusCode == HTTP_OK) {
+        return Result.success(_parseArticles(jsonDecode(result.body)));
+      } else {
+        return Result.error(
+          HttpException(
+            'Can\'t load data',
+            uri: result.request.url,
+          ),
+        );
+      }
+    } catch (e) {
+      return Result.error(e);
+    }
+  }
+
 //
 //  Future<Result> getSources(
 //      {String category, String language, String country}) async {}
@@ -53,8 +79,8 @@ class ApiHelper {
   }
 
   ApiHelper._internal();
-  factory ApiHelper() => _singleton;
 
+  factory ApiHelper() => _singleton;
 }
 
 class Result<T> {
@@ -62,7 +88,7 @@ class Result<T> {
 
   factory Result.success(T value) = Success<T>;
 
-  factory Result.error(T exception) = Error<T>;
+  factory Result.error(Exception exception) = Error<T>;
 }
 
 class Success<T> extends Result<T> {
@@ -72,7 +98,7 @@ class Success<T> extends Result<T> {
 }
 
 class Error<T> extends Result<T> {
-  final T exception;
+  final Exception exception;
 
   Error(this.exception) : super._();
 }

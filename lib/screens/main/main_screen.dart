@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/i18n/strings.dart';
 import 'package:nues_feet_flutter/screens/bookmarks_screen.dart';
 import 'package:nues_feet_flutter/screens/home_screen.dart';
-import 'package:nues_feet_flutter/screens/search_screen.dart';
+import 'package:nues_feet_flutter/screens/search/search_screen.dart';
 import 'package:nues_feet_flutter/screens/settings_screen.dart';
 
 class MainScreen extends StatelessWidget {
