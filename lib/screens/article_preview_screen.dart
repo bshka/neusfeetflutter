@@ -10,7 +10,7 @@ import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
 import 'package:url_launcher/url_launcher.dart';
 
-import 'articles/boormark_button.dart';
+import 'articles/bookmark_button.dart';
 
 class ArticlePreviewScreen extends StatelessWidget {
   final Article _article;

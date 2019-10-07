@@ -8,7 +8,7 @@ import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
 import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
 
-import 'boormark_button.dart';
+import 'bookmark_button.dart';
 
 class ArticleCard extends StatelessWidget {
   final Article article;
