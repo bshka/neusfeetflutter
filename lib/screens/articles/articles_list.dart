@@ -3,9 +3,10 @@ import 'dart:collection';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/main.dart';
-import 'package:nues_feet_flutter/model/article_model.dart';
+import 'package:nues_feet_flutter/model/article.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart' as Api;
 import 'package:nues_feet_flutter/network/use_case_load_articles.dart';
 import 'package:nues_feet_flutter/screens/article_preview_screen.dart';
@@ -16,6 +17,10 @@ import 'package:stream_transform/stream_transform.dart';
 class ArticlesList extends StatelessWidget {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
+
+  final bool isDismissible;
+
+  ArticlesList({this.isDismissible = false});
 
   @override
   Widget build(BuildContext context) {
@@ -82,21 +87,49 @@ class ArticlesList extends StatelessWidget {
     );
   }
 
+  Future<void> _addOrRemoveArticle(
+      BuildContext context, Article article) async {
+    if (article.localId != null) {
+      await DataProvider.of(context).addRemoveBookmarkUseCase.remove(article);
+    } else {
+      await DataProvider.of(context).addRemoveBookmarkUseCase.add(article);
+    }
+  }
+
   Widget _itemBuilder(
       {ArticlesListProvider holder, BuildContext context, int position}) {
     // pagination
-    if (position == holder.articles.length - 10) {
+    if (position >= holder.articles.length - 10) {
       holder.loadMore();
     }
     final article = holder.articles[position];
-    return ArticleCard(
+
+    var item = ArticleCard(
       article,
       onTap: () {
         NavigationProvider.of(context)
             .openScreen(context, ArticlePreviewScreen(article));
       },
-      onBookmark: () {},
+      onBookmark: () async {
+        await _addOrRemoveArticle(context, article);
+        await holder.refresh();
+      },
     );
+
+    if (isDismissible) {
+      return Dismissible(
+        key: Key(article.toString() + '$position'),
+        child: item,
+        onDismissed: (_) async {
+          await DataProvider.of(context)
+              .addRemoveBookmarkUseCase
+              .remove(article);
+          await holder.refresh();
+        },
+      );
+    } else {
+      return item;
+    }
   }
 }
 
@@ -118,16 +151,16 @@ class ArticlesListProvider with ChangeNotifier {
     debounce(
       Duration(milliseconds: 500),
     ).bind(_searchController.stream).listen(
-      (query) {
-        print('Search text input: $query');
-        _query = query;
-        refresh();
-      },
-      cancelOnError: false,
-      onError: (error) {
-        print(error);
-      },
-    );
+          (query) {
+            print('Search text input: $query');
+            _query = query;
+            refresh();
+          },
+          cancelOnError: false,
+          onError: (error) {
+            print(error);
+          },
+        );
   }
 
   void add(List<Article> articles) {

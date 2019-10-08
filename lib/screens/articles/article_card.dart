@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:nues_feet_flutter/model/article_model.dart';
+import 'package:nues_feet_flutter/model/article.dart';
 import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
 import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
@@ -68,7 +68,10 @@ class ArticleCard extends StatelessWidget {
                         Container(
                           height: 48,
                           width: 48,
-                          child: BookmarkButton(onBookmark),
+                          child: BookmarkButton(
+                            onTap: onBookmark,
+                            addedToBookmarks: article.localId != null,
+                          ),
                         ),
                       ],
                     ),

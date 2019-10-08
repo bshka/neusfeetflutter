@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/app/my_app_android.dart';
 import 'package:nues_feet_flutter/app/my_app_ios.dart';
+import 'package:nues_feet_flutter/local/database_helper.dart';
+import 'package:nues_feet_flutter/local/use_case_add_remove_bookmark.dart';
+import 'package:nues_feet_flutter/local/use_case_bookmarks.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart';
 import 'package:nues_feet_flutter/network/use_case_headlines.dart';
 import 'package:nues_feet_flutter/network/use_case_search.dart';
@@ -31,6 +34,13 @@ class DataProvider {
       LoadHeadlinesUseCase(ApiHelper());
   final SearchArticlesUseCase searchArticlesUseCase =
       SearchArticlesUseCase(ApiHelper());
+
+  static Future<DatabaseHelper> _helper = DatabaseHelper.instance();
+
+  final LoadBookmarksUseCase loadBookmarksUseCase =
+      LoadBookmarksUseCase(_helper);
+  final AddRemoveBookmarkUseCase addRemoveBookmarkUseCase =
+      AddRemoveBookmarkUseCase(_helper);
 
   static DataProvider of(context) => Provider.of(context, listen: false);
 }

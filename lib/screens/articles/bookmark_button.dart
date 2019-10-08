@@ -6,27 +6,30 @@ import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
 
 class BookmarkButton extends StatelessWidget {
   final Function onTap;
+  final bool addedToBookmarks;
 
-  BookmarkButton(this.onTap);
+  BookmarkButton({this.onTap, this.addedToBookmarks});
 
   @override
   Widget build(BuildContext context) {
     return Platform.isIOS
-        ? _BookmarkButtoniOS(onTap)
-        : _BookmarkButtonAndroid(onTap);
+        ? _BookmarkButtoniOS(onTap, addedToBookmarks)
+        : _BookmarkButtonAndroid(onTap, addedToBookmarks);
   }
 }
 
 class _BookmarkButtonAndroid extends StatelessWidget {
   final Function onTap;
+  final bool addedToBookmarks;
 
-  _BookmarkButtonAndroid(this.onTap);
+  _BookmarkButtonAndroid(this.onTap, this.addedToBookmarks);
 
   @override
   Widget build(BuildContext context) {
+
     return InkResponse(
       child: Icon(
-        Icons.bookmark_border,
+        addedToBookmarks ? Icons.bookmark : Icons.bookmark_border,
         size: 24,
       ),
       onTap: onTap,
@@ -36,15 +39,16 @@ class _BookmarkButtonAndroid extends StatelessWidget {
 
 class _BookmarkButtoniOS extends StatelessWidget {
   final Function onTap;
+  final bool addedToBookmarks;
 
-  _BookmarkButtoniOS(this.onTap);
+  _BookmarkButtoniOS(this.onTap, this.addedToBookmarks);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
         pressedOpacity: 0.5,
         child: Icon(
-          Icons.bookmark_border,
+          addedToBookmarks ? Icons.bookmark : Icons.bookmark_border,
           color: Colors.kBlack,
           size: 24,
         ),

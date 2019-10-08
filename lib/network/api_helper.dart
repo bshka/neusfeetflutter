@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:nues_feet_flutter/model/article_model.dart';
+import 'package:nues_feet_flutter/model/article.dart';
 
 class ApiHelper {
   static final ApiHelper _singleton = ApiHelper._internal();

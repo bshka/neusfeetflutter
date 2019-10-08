@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nues_feet_flutter/i18n/strings.dart';
-import 'package:nues_feet_flutter/model/article_model.dart';
+import 'package:nues_feet_flutter/model/article.dart';
 import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
 import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
@@ -76,7 +76,10 @@ class ArticlePreviewScreen extends StatelessWidget {
                       Container(
                         height: 48,
                         width: 48,
-                        child: BookmarkButton(_onBookmark),
+                        child: BookmarkButton(
+                          onTap: _onBookmark,
+                          addedToBookmarks: false, // TODO
+                        ),
                       ),
                     ],
                   ),
@@ -146,10 +149,7 @@ class ArticlePreviewScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         pressedOpacity: 0.5,
         child: Text(
-          Strings
-              .of(context)
-              .readArticle
-              .toUpperCase(),
+          Strings.of(context).readArticle.toUpperCase(),
           style: Styles.kTextMedium.copyWith(
             color: Colors.kWhite,
             fontSize: 12,
@@ -170,10 +170,7 @@ class ArticlePreviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              Strings
-                  .of(context)
-                  .readArticle
-                  .toUpperCase(),
+              Strings.of(context).readArticle.toUpperCase(),
               style: Styles.kTextMedium.copyWith(
                 color: Colors.kWhite,
                 fontSize: 12,

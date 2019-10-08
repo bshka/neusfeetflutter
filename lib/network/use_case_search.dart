@@ -1,4 +1,4 @@
-import 'package:nues_feet_flutter/model/article_model.dart';
+import 'package:nues_feet_flutter/model/article.dart';
 import 'package:nues_feet_flutter/network/use_case_load_articles.dart';
 
 import 'api_helper.dart';
