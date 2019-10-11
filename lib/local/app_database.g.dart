@@ -169,8 +169,8 @@ class _$BookmarkDao extends BookmarkDao {
   }
 
   @override
-  Future<void> addBookmark(Bookmark article) async {
-    await _bookmarkInsertionAdapter.insert(
+  Future<int> addBookmark(Bookmark article) {
+    return _bookmarkInsertionAdapter.insertAndReturnId(
         article, sqflite.ConflictAlgorithm.replace);
   }
 

@@ -24,10 +24,4 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
       ),
     );
   }
-
-  @override
-  void deactivate() {
-    ArticlesListProvider.of(context).dispose();
-    super.deactivate();
-  }
 }

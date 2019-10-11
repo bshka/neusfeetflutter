@@ -31,12 +31,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  @override
-  void deactivate() {
-    DataProvider.of(context).dispose();
-    super.deactivate();
-  }
-
 }
 
 class DataProvider {

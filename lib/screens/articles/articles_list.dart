@@ -121,7 +121,7 @@ class _ArticlesListState extends State<ArticlesList> {
   Widget _getListView(ArticlesListProvider holder, AsyncSnapshot snapshot) {
     return SliverSafeArea(
       top: false,
-      sliver: snapshot.data.length == 0
+      sliver: snapshot.data == null || snapshot.data.length == 0
           ? _emptyView()
           : SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -241,6 +241,7 @@ class ArticlesListProvider with ChangeNotifier {
   @override
   void dispose() {
     super.dispose();
+    print('Articles list provider disposed');
     _searchController.close();
   }
 }

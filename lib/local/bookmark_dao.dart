@@ -5,7 +5,7 @@ import 'bookmark.dart';
 @dao
 abstract class BookmarkDao {
   @Insert(onConflict: OnConflictStrategy.REPLACE)
-  Future<void> addBookmark(Bookmark article);
+  Future<int> addBookmark(Bookmark article);
 
   @delete
   Future<void> removeBookmark(Bookmark article);

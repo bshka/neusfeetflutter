@@ -36,6 +36,31 @@ class Article {
       this.url,
       this.content});
 
+  Article copyWith(
+      {localId,
+      publishedAt,
+      author,
+      urlToImage,
+      description,
+      sourceName,
+      sourceId,
+      title,
+      url,
+      content}) {
+    return Article(
+      localId: localId ?? this.localId,
+      publishedAt: publishedAt ?? this.publishedAt,
+      author: author ?? this.author,
+      urlToImage: urlToImage ?? this.urlToImage,
+      description: description ?? this.description,
+      sourceName: sourceName ?? this.sourceName,
+      sourceId: sourceId ?? this.sourceId,
+      title: title ?? this.title,
+      url: url ?? this.url,
+      content: content ?? this.content,
+    );
+  }
+
   factory Article.fromBookmark(Bookmark bookmark) {
     return Article(
       localId: bookmark.localId,

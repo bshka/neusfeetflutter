@@ -4,19 +4,150 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nues_feet_flutter/i18n/strings.dart';
+import 'package:nues_feet_flutter/main.dart';
 import 'package:nues_feet_flutter/model/article.dart';
 import 'package:nues_feet_flutter/styles/colors.dart' as Colors;
 import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'articles/bookmark_button.dart';
 
-class ArticlePreviewScreen extends StatelessWidget {
+class ArticlePreviewScreen extends StatefulWidget {
   final Article _article;
 
-  void _onBookmark() {
-    // TODO add to the database
+  ArticlePreviewScreen(this._article);
+
+  @override
+  _ArticlePreviewScreenState createState() =>
+      _ArticlePreviewScreenState(_article);
+}
+
+class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
+  Article _article;
+  bool _addedToBookmarks;
+
+  _ArticlePreviewScreenState(this._article) {
+    _addedToBookmarks = _article.localId != null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Provider(
+      builder: (_) => DataProvider(),
+      child: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 330,
+              primary: true,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.parallax,
+                background: FadeInImage.assetNetwork(
+                  height: 190,
+                  placeholder: Images.kPlaceholder,
+                  image: _article.urlToImage ?? '',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ];
+        },
+        body: Container(
+          color: Colors.kAlabaster,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(
+                            _article.title ?? '',
+                            style: Styles.kTextMedium.copyWith(
+                              color: Colors.kBlack,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 48,
+                          width: 48,
+                          child: BookmarkButton(
+                            onTap: _onBookmarkClicked,
+                            addedToBookmarks: _addedToBookmarks,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          _article.sourceName != null
+                              ? _article.sourceName.toUpperCase()
+                              : '',
+                          style: Styles.kTextRegular.copyWith(
+                            color: Colors.kMartini,
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Expanded(
+                          child: Text(
+                            DateFormat('dd.MM.yyyy')
+                                .format(_article.publishedAt ?? DateTime.now()),
+                            style: Styles.kTextLight.copyWith(
+                              color: Colors.kFrenchGray,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      _article.description ?? '',
+                      style: Styles.kTextLight.copyWith(
+                        color: Colors.kManatee,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 50),
+                      child: _openArticle(context),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _onReadArticle() async {
@@ -25,121 +156,19 @@ class ArticlePreviewScreen extends StatelessWidget {
     }
   }
 
-  ArticlePreviewScreen(this._article);
-
-  @override
-  Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          SliverAppBar(
-            expandedHeight: 330,
-            primary: true,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
-              background: FadeInImage.assetNetwork(
-                height: 190,
-                placeholder: Images.kPlaceholder,
-                image: _article.urlToImage ?? '',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ];
-      },
-      body: Container(
-        color: Colors.kAlabaster,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(
-                          _article.title ?? '',
-                          style: Styles.kTextMedium.copyWith(
-                            color: Colors.kBlack,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 48,
-                        width: 48,
-                        child: BookmarkButton(
-                          onTap: _onBookmark,
-                          addedToBookmarks: false, // TODO
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        _article.sourceName != null
-                            ? _article.sourceName.toUpperCase()
-                            : '',
-                        style: Styles.kTextRegular.copyWith(
-                          color: Colors.kMartini,
-                          fontSize: 14,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Expanded(
-                        child: Text(
-                          DateFormat('dd MM yyyy')
-                              .format(_article.publishedAt ?? DateTime.now()),
-                          style: Styles.kTextLight.copyWith(
-                            color: Colors.kFrenchGray,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    _article.description ?? '',
-                    style: Styles.kTextLight.copyWith(
-                      color: Colors.kManatee,
-                      fontSize: 18,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    child: _openArticle(context),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  void _onBookmarkClicked() async {
+    if (_article.localId == null) {
+      int id =
+      await DataProvider.of(context).addRemoveBookmarkUseCase.add(_article);
+      setState(() {
+        _article = widget._article.copyWith(localId: id);
+      });
+    } else {
+      await DataProvider.of(context).addRemoveBookmarkUseCase.remove(_article);
+      setState(() {
+        _article = widget._article.copyWith(localId: null);
+      });
+    }
   }
 
   Widget _openArticle(context) {

@@ -8,7 +8,7 @@ class AddRemoveBookmarkUseCase {
 
   AddRemoveBookmarkUseCase(this._bookmarksBean);
 
-  Future<void> add(Article article) async {
+  Future<int> add(Article article) async {
     DatabaseHelper database = await _bookmarksBean;
     return database.bookmarkDao.addBookmark(Bookmark.fromArticle(article));
   }

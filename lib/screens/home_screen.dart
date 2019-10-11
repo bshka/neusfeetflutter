@@ -21,10 +21,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  @override
-  void deactivate() {
-    ArticlesListProvider.of(context).dispose();
-    super.deactivate();
-  }
 }

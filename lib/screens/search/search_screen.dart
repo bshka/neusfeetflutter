@@ -33,10 +33,4 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
     );
   }
-
-  @override
-  void deactivate() {
-    ArticlesListProvider.of(context).dispose();
-    super.deactivate();
-  }
 }
