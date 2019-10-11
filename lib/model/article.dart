@@ -1,40 +1,27 @@
 import 'package:intl/intl.dart';
-import 'package:jaguar_orm/jaguar_orm.dart';
+import 'package:nues_feet_flutter/local/bookmark.dart';
 
-part 'article.jorm.dart';
+final DateFormat _kFormat = DateFormat('yyyy-MM-dd\'T\'HH:mm:ss', 'en');
 
 class Article {
-  static final DateFormat _kFormat =
-      DateFormat('yyyy-MM-dd\'T\'HH:mm:ss', 'en');
-
-  @PrimaryKey(auto: true)
   final int localId;
 
-  @Column(isNullable: true)
   final DateTime publishedAt;
 
-  @Column(isNullable: true)
   final String author;
 
-  @Column(isNullable: true)
   final String urlToImage;
 
-  @Column(isNullable: true)
   final String description;
 
-  @Column(isNullable: true)
   final String sourceName;
 
-  @Column(isNullable: true)
   final String sourceId;
 
-  @Column(isNullable: true)
   final String title;
 
-  @Column(isNullable: true)
   final String url;
 
-  @Column(isNullable: true)
   final String content;
 
   Article(
@@ -48,6 +35,22 @@ class Article {
       this.title,
       this.url,
       this.content});
+
+  factory Article.fromBookmark(Bookmark bookmark) {
+    return Article(
+      localId: bookmark.localId,
+      publishedAt: DateTime.fromMillisecondsSinceEpoch(
+          bookmark.publishedAtMillisSinceEpoch),
+      author: bookmark.author,
+      urlToImage: bookmark.urlToImage,
+      description: bookmark.description,
+      sourceName: bookmark.sourceName,
+      sourceId: bookmark.sourceId,
+      title: bookmark.title,
+      url: bookmark.url,
+      content: bookmark.content,
+    );
+  }
 
   factory Article.fromJson(Map<String, dynamic> article) {
     return Article(
@@ -65,14 +68,8 @@ class Article {
 
   @override
   String toString() {
-    return 'Article{localId: $localId, publishedAt: $publishedAt, author: $author, '
+    return 'Article{publishedAt: ${publishedAt.millisecondsSinceEpoch}, author: $author, '
         'urlToImage: $urlToImage, description: $description, sourceName: $sourceName, '
-        'sourceId: $sourceId, title: $title, url: $url, content: $content}';
+        'sourceId: $sourceId, title: $title, url: $url, content: $content, localId: $localId}';
   }
-}
-
-@GenBean()
-class ArticleBean extends Bean<Article> with _ArticleBean {
-  ArticleBean(Adapter adapter) : super(adapter);
-  final String tableName = 'articles';
 }

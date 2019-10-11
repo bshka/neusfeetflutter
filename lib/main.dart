@@ -6,16 +6,19 @@ import 'package:nues_feet_flutter/app/my_app_android.dart';
 import 'package:nues_feet_flutter/app/my_app_ios.dart';
 import 'package:nues_feet_flutter/local/database_helper.dart';
 import 'package:nues_feet_flutter/local/use_case_add_remove_bookmark.dart';
-import 'package:nues_feet_flutter/local/use_case_bookmarks.dart';
+import 'package:nues_feet_flutter/model/use_case_load_articles_stream.dart';
 import 'package:nues_feet_flutter/network/api_helper.dart';
-import 'package:nues_feet_flutter/network/use_case_headlines.dart';
-import 'package:nues_feet_flutter/network/use_case_search.dart';
 import 'package:nues_feet_flutter/screens/main/main_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -27,20 +30,35 @@ class MyApp extends StatelessWidget {
           Platform.isIOS ? MyAppiOS(MainScreen()) : MyAppAndroid(MainScreen()),
     );
   }
+
+  @override
+  void deactivate() {
+    DataProvider.of(context).dispose();
+    super.deactivate();
+  }
+
 }
 
 class DataProvider {
-  final LoadHeadlinesUseCase loadHeadlinesUseCase =
+  LoadHeadlinesUseCase get loadHeadlinesUseCase =>
       LoadHeadlinesUseCase(ApiHelper());
-  final SearchArticlesUseCase searchArticlesUseCase =
+
+  SearchArticlesUseCase get searchArticlesUseCase =>
       SearchArticlesUseCase(ApiHelper());
 
   static Future<DatabaseHelper> _helper = DatabaseHelper.instance();
 
-  final LoadBookmarksUseCase loadBookmarksUseCase =
+  LoadBookmarksUseCase get loadBookmarksUseCase =>
       LoadBookmarksUseCase(_helper);
-  final AddRemoveBookmarkUseCase addRemoveBookmarkUseCase =
+
+  AddRemoveBookmarkUseCase get addRemoveBookmarkUseCase =>
       AddRemoveBookmarkUseCase(_helper);
+
+  void dispose() {
+    loadHeadlinesUseCase.dispose();
+    searchArticlesUseCase.dispose();
+    loadBookmarksUseCase.dispose();
+  }
 
   static DataProvider of(context) => Provider.of(context, listen: false);
 }

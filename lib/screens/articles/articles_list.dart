@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -7,83 +6,136 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nues_feet_flutter/main.dart';
 import 'package:nues_feet_flutter/model/article.dart';
-import 'package:nues_feet_flutter/network/api_helper.dart' as Api;
-import 'package:nues_feet_flutter/network/use_case_load_articles.dart';
+import 'package:nues_feet_flutter/model/use_case_load_articles_stream.dart';
 import 'package:nues_feet_flutter/screens/article_preview_screen.dart';
 import 'package:nues_feet_flutter/screens/articles/article_card.dart';
+import 'package:nues_feet_flutter/styles/styles.dart' as Styles;
+import 'package:nues_feet_flutter/styles/images.dart' as Images;
 import 'package:provider/provider.dart';
 import 'package:stream_transform/stream_transform.dart';
 
-class ArticlesList extends StatelessWidget {
+class ArticlesList extends StatefulWidget {
+  final bool isDismissible;
+  final String _emptyViewText;
+
+  ArticlesList(this._emptyViewText, {this.isDismissible = false});
+
+  @override
+  _ArticlesListState createState() => _ArticlesListState();
+}
+
+class _ArticlesListState extends State<ArticlesList> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
 
-  final bool isDismissible;
+  GlobalKey _scrollViewKey = GlobalKey();
+  double _scrollViewHeight;
 
-  ArticlesList({this.isDismissible = false});
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+    super.initState();
+  }
+
+  void _afterLayout(_) {
+    _scrollViewHeight = _scrollViewKey.currentContext?.size?.height;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ArticlesListProvider>(
+      key: _scrollViewKey,
       builder: (context, holder, child) {
-        if (holder.articles.length == 0) {
-          return Center(
-            child: Platform.isIOS
-                ? CupertinoActivityIndicator()
-                : CircularProgressIndicator(),
-          );
-        } else {
-          return Platform.isIOS
-              ? _iOSListView(holder)
-              : _androidListView(holder);
-        }
+        return StreamBuilder(
+          stream: holder.articlesStream,
+          builder: (context, snapshot) {
+            /*if (snapshot.hasError) {
+              return Center(
+                child: Text('Empty view'),
+              );
+            } else*/
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Platform.isIOS
+                    ? CupertinoActivityIndicator()
+                    : CircularProgressIndicator(),
+              );
+            } else {
+              return Platform.isIOS
+                  ? _iOSListView(holder, snapshot)
+                  : _androidListView(holder, snapshot);
+            }
+          },
+        );
       },
     );
   }
 
-  Widget _androidListView(ArticlesListProvider holder) {
-    return RefreshIndicator(
-      key: _refreshIndicatorKey,
-      onRefresh: () => holder.refresh(),
-      child: ListView.builder(
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemBuilder: (context, position) {
-          return _itemBuilder(
-            holder: holder,
-            context: context,
-            position: position,
-          );
-        },
-        itemCount: holder.articles.length,
+  Widget _emptyView() {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: _scrollViewHeight,
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(Images.kEmptyList),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                widget._emptyViewText,
+                textAlign: TextAlign.center,
+                style: Styles.kTextMedium.copyWith(
+                  fontSize: 22,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Widget _iOSListView(ArticlesListProvider holder) {
+  Widget _androidListView(ArticlesListProvider holder, AsyncSnapshot snapshot) {
+    return RefreshIndicator(
+      key: _refreshIndicatorKey,
+      onRefresh: () => holder.refresh(),
+      child: _getListView(holder, snapshot),
+    );
+  }
+
+  Widget _iOSListView(ArticlesListProvider holder, AsyncSnapshot snapshot) {
     return CustomScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       slivers: <Widget>[
         CupertinoSliverRefreshControl(
-          refreshTriggerPullDistance: 150,
           onRefresh: () => holder.refresh(),
         ),
-        SliverSafeArea(
-          top: false,
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, position) {
-                return _itemBuilder(
-                  holder: holder,
-                  context: context,
-                  position: position,
-                );
-              },
-              childCount: holder.articles.length,
-            ),
-          ),
-        )
+        _getListView(holder, snapshot),
       ],
+    );
+  }
+
+  Widget _getListView(ArticlesListProvider holder, AsyncSnapshot snapshot) {
+    return SliverSafeArea(
+      top: false,
+      sliver: snapshot.data.length == 0
+          ? _emptyView()
+          : SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, position) {
+                  return _itemBuilder(
+                    holder: holder,
+                    snapshot: snapshot,
+                    context: context,
+                    position: position,
+                  );
+                },
+                childCount: snapshot.data.length,
+              ),
+            ),
     );
   }
 
@@ -97,34 +149,36 @@ class ArticlesList extends StatelessWidget {
   }
 
   Widget _itemBuilder(
-      {ArticlesListProvider holder, BuildContext context, int position}) {
+      {ArticlesListProvider holder,
+      AsyncSnapshot snapshot,
+      BuildContext context,
+      int position}) {
     // pagination
-    if (position >= holder.articles.length - 10) {
+    if (position >= snapshot.data.length - 10) {
       holder.loadMore();
     }
-    final article = holder.articles[position];
+    final article = snapshot.data[position];
 
     var item = ArticleCard(
       article,
+      key: Key(article.toString()),
       onTap: () {
         NavigationProvider.of(context)
             .openScreen(context, ArticlePreviewScreen(article));
       },
       onBookmark: () async {
         await _addOrRemoveArticle(context, article);
-        await holder.refresh();
       },
     );
 
-    if (isDismissible) {
+    if (widget.isDismissible) {
       return Dismissible(
-        key: Key(article.toString() + '$position'),
+        key: Key(article.toString() + 'dismissable'),
         child: item,
         onDismissed: (_) async {
           await DataProvider.of(context)
               .addRemoveBookmarkUseCase
               .remove(article);
-          await holder.refresh();
         },
       );
     } else {
@@ -134,15 +188,13 @@ class ArticlesList extends StatelessWidget {
 }
 
 class ArticlesListProvider with ChangeNotifier {
-  List<Article> _articles = [];
-  final LoadArticlesUseCase _useCase;
+  final LoadArticlesUseCaseStream<List<Article>> _useCase;
   int _page = 1;
-  bool _canLoadMore = true;
   bool _isLoading = false;
   String _query;
-  var _searchController = StreamController<String>();
+  final _searchController = StreamController<String>();
 
-  UnmodifiableListView<Article> get articles => UnmodifiableListView(_articles);
+  Stream<List<Article>> get articlesStream => _useCase.data;
 
   ArticlesListProvider(this._useCase) {
     _loadData();
@@ -163,42 +215,23 @@ class ArticlesListProvider with ChangeNotifier {
         );
   }
 
-  void add(List<Article> articles) {
-    _articles.addAll(articles);
-    notifyListeners();
-  }
-
   static ArticlesListProvider of(context) => Provider.of(context);
 
   Future<void> _loadData() async {
     _isLoading = true;
-
-    Api.Result result = await _useCase.load(page: _page, query: _query);
-    if (result is Api.Success<List<Article>>) {
-      _articles.addAll(result.value);
-      notifyListeners();
-    } else if (result is Api.Error) {
-      // TODO show error
-      _canLoadMore = false;
-      print(result.exception);
-    }
-
+    await _useCase.load(page: _page, query: _query);
     _isLoading = false;
   }
 
   void loadMore() {
-    if (!_isLoading && _canLoadMore) {
+    if (!_isLoading && _useCase.canLoadMore) {
       _page++;
       _loadData();
     }
   }
 
-  Future<void> refresh() {
-    print('refresh called');
-    _canLoadMore = true;
-    _page = 1;
-    _articles.clear();
-    return _loadData();
+  Future<void> refresh() async {
+    return await _useCase.reload(query: _query);
   }
 
   void search(String query) {

@@ -23,17 +23,20 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "appName" : MessageLookupByLibrary.simpleMessage("NeusFeet"),
     "bookmarkAdded" : MessageLookupByLibrary.simpleMessage("Bookmark added!"),
+    "bookmarksEmptyText" : MessageLookupByLibrary.simpleMessage("There are still no bookmarks. Try to add one first!"),
     "bookmarkRemoved" : MessageLookupByLibrary.simpleMessage("Bookmark removed!"),
     "bookmarks" : MessageLookupByLibrary.simpleMessage("Bookmarks"),
     "category" : MessageLookupByLibrary.simpleMessage("Category"),
     "country" : MessageLookupByLibrary.simpleMessage("Country"),
     "emptyArticles" : MessageLookupByLibrary.simpleMessage("Nothing to show…"),
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
+    "homeEmptyText" : MessageLookupByLibrary.simpleMessage("There are no headlines. Try again later."),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "openInBrowser" : MessageLookupByLibrary.simpleMessage("Open in browser"),
     "readArticle" : MessageLookupByLibrary.simpleMessage("Read article"),
     "search" : MessageLookupByLibrary.simpleMessage("Search"),
     "searchHint" : MessageLookupByLibrary.simpleMessage("Search news…"),
+    "searchEmptyText" : MessageLookupByLibrary.simpleMessage("Can\' find news with for this request. Try different keywords."),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings")
   };
 }

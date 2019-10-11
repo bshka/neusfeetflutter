@@ -15,7 +15,9 @@ class ArticleCard extends StatelessWidget {
   final Function onTap;
   final Function onBookmark;
 
-  ArticleCard(this.article, {@required this.onTap, @required this.onBookmark});
+  ArticleCard(this.article,
+      {Key key, @required this.onTap, @required this.onBookmark})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,8 @@ class ArticleCard extends StatelessWidget {
                   placeholder: Images.kPlaceholder,
                   image: article.urlToImage ?? '',
                   fit: BoxFit.cover,
+                  fadeInDuration: Duration(milliseconds: 100),
+                  fadeOutDuration: Duration(milliseconds: 100),
                 ),
               ),
               Padding(
@@ -92,7 +96,7 @@ class ArticleCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            DateFormat('dd MM yyyy')
+                            DateFormat('dd.MM.yyyy')
                                 .format(article.publishedAt ?? DateTime.now()),
                             style: Styles.kTextLight.copyWith(
                               color: Colors.kFrenchGray,

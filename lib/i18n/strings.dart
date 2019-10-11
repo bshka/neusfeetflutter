@@ -152,6 +152,33 @@ class Strings {
     );
   }
 
+  String get bookmarksEmptyText {
+    return Intl.message(
+      'There are still no bookmarks. Try to add one first!',
+      name: 'bookmarksEmptyText',
+      desc: 'No bookmarks message',
+      locale: localeName,
+    );
+  }
+
+  String get homeEmptyText {
+    return Intl.message(
+      'There are no headlines. Try again later.',
+      name: 'homeEmptyText',
+      desc: 'No headlines message',
+      locale: localeName,
+    );
+  }
+
+  String get searchEmptyText {
+    return Intl.message(
+      'Can\' find news with for this request. Try different keywords.',
+      name: 'searchEmptyText',
+      desc: 'No news in search message',
+      locale: localeName,
+    );
+  }
+
 }
 
 class AppStringsDelegate extends LocalizationsDelegate<Strings> {

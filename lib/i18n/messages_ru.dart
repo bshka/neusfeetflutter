@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "readArticle" : MessageLookupByLibrary.simpleMessage("Прочитать статью"),
     "search" : MessageLookupByLibrary.simpleMessage("Поиск"),
     "searchHint" : MessageLookupByLibrary.simpleMessage("Поиск новостей…"),
-    "settings" : MessageLookupByLibrary.simpleMessage("Настройки")
+    "settings" : MessageLookupByLibrary.simpleMessage("Настройки"),
+    "bookmarksEmptyText" : MessageLookupByLibrary.simpleMessage("Вы пока не добавили ни одной закладки. Добавьте, и они появятся здесь."),
+    "homeEmptyText" : MessageLookupByLibrary.simpleMessage("Новостей нет. Попробуйте позднее."),
+    "searchEmptyText" : MessageLookupByLibrary.simpleMessage("Нет новостей по вашему запросу. Попробуйте другой.")
   };
 }

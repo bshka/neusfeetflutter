@@ -69,4 +69,19 @@
     "description": "Bookmark removed message",
     "type": "text"
   }
+  "bookmarksEmptyText": "Вы пока не добавили ни одной закладки. Добавьте, и они появятся здесь.",
+  "@bookmarksEmptyText": {
+    "description": "No bookmarks message",
+    "type": "text"
+  },
+  "homeEmptyText": "Новостей нет. Попробуйте позднее.",
+  "@homeEmptyText": {
+    "description": "No headlines message",
+    "type": "text"
+  },
+  "searchEmptyText": "Нет новостей по вашему запросу. Попробуйте другой.",
+  "@searchEmptyText": {
+    "description": "No news in search message",
+    "type": "text"
+  }
 }

@@ -83,5 +83,20 @@
     "description": "Bookmark removed message",
     "type": "text",
     "placeholders": {}
-  }
+  },
+   "bookmarksEmptyText": "There are still no bookmarks. Try to add one first!",
+     "@bookmarksEmptyText": {
+       "description": "No bookmarks message",
+       "type": "text"
+     },
+     "homeEmptyText": "There are no headlines. Try again later.",
+     "@homeEmptyText": {
+       "description": "No headlines message",
+       "type": "text"
+     },
+     "searchEmptyText": "Can\' find news with for this request. Try different keywords.",
+     "@searchEmptyText": {
+       "description": "No news in search message",
+       "type": "text"
+     }
 }
