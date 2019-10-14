@@ -42,13 +42,16 @@ class ArticleCard extends StatelessWidget {
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
                 ),
-                child: FadeInImage.assetNetwork(
-                  height: 190,
-                  placeholder: Images.kPlaceholder,
-                  image: article.urlToImage ?? '',
-                  fit: BoxFit.cover,
-                  fadeInDuration: Duration(milliseconds: 100),
-                  fadeOutDuration: Duration(milliseconds: 100),
+                child: Hero(
+                  tag: 'image' + article.toString(),
+                  child: FadeInImage.assetNetwork(
+                    height: 190,
+                    placeholder: Images.kPlaceholder,
+                    image: article.urlToImage ?? '',
+                    fit: BoxFit.cover,
+                    fadeInDuration: Duration(milliseconds: 100),
+                    fadeOutDuration: Duration(milliseconds: 100),
+                  ),
                 ),
               ),
               Padding(

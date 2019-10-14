@@ -45,11 +45,14 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
-                background: FadeInImage.assetNetwork(
-                  height: 190,
-                  placeholder: Images.kPlaceholder,
-                  image: _article.urlToImage ?? '',
-                  fit: BoxFit.cover,
+                background: Hero(
+                  tag: 'image' + _article.toString(),
+                  child: FadeInImage.assetNetwork(
+                    height: 190,
+                    placeholder: Images.kPlaceholder,
+                    image: _article.urlToImage ?? '',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
