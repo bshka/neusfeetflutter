@@ -5,12 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'articles/articles_list.dart';
 
-class BookmarksScreen extends StatefulWidget {
-  @override
-  _BookmarksScreenState createState() => _BookmarksScreenState();
-}
-
-class _BookmarksScreenState extends State<BookmarksScreen> {
+class BookmarksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

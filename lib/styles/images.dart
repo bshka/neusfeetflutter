@@ -1,2 +1,2 @@
-const String kPlaceholder = 'images/placeholder.jpg';
-const String kEmptyList = 'images/empty_list.png';
+const String placeholder = 'images/placeholder.jpg';
+const String emptyList = 'images/empty_list.png';

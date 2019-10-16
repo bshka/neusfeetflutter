@@ -80,14 +80,14 @@ class _ArticlesListState extends State<ArticlesList> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(Images.kEmptyList),
+              Image.asset(Images.emptyList),
               SizedBox(
                 height: 10,
               ),
               Text(
                 widget._emptyViewText,
                 textAlign: TextAlign.center,
-                style: Styles.kTextMedium.copyWith(
+                style: Styles.textMedium.copyWith(
                   fontSize: 22,
                 ),
               ),

@@ -49,7 +49,7 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
                   tag: 'image' + _article.toString(),
                   child: FadeInImage.assetNetwork(
                     height: 190,
-                    placeholder: Images.kPlaceholder,
+                    placeholder: Images.placeholder,
                     image: _article.urlToImage ?? '',
                     fit: BoxFit.cover,
                   ),
@@ -59,7 +59,7 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
           ];
         },
         body: Container(
-          color: Colors.kAlabaster,
+          color: Colors.alabaster,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -77,8 +77,8 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
                         Expanded(
                           child: Text(
                             _article.title ?? '',
-                            style: Styles.kTextMedium.copyWith(
-                              color: Colors.kBlack,
+                            style: Styles.textMedium.copyWith(
+                              color: Colors.black,
                               fontSize: 18,
                             ),
                           ),
@@ -103,8 +103,8 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
                           _article.sourceName != null
                               ? _article.sourceName.toUpperCase()
                               : '',
-                          style: Styles.kTextRegular.copyWith(
-                            color: Colors.kMartini,
+                          style: Styles.textRegular.copyWith(
+                            color: Colors.martini,
                             fontSize: 14,
                           ),
                         ),
@@ -115,8 +115,8 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
                           child: Text(
                             DateFormat('dd.MM.yyyy')
                                 .format(_article.publishedAt ?? DateTime.now()),
-                            style: Styles.kTextLight.copyWith(
-                              color: Colors.kFrenchGray,
+                            style: Styles.textLight.copyWith(
+                              color: Colors.frenchGray,
                               fontSize: 14,
                             ),
                           ),
@@ -128,8 +128,8 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
                     ),
                     Text(
                       _article.description ?? '',
-                      style: Styles.kTextLight.copyWith(
-                        color: Colors.kManatee,
+                      style: Styles.textLight.copyWith(
+                        color: Colors.manatee,
                         fontSize: 18,
                       ),
                     ),
@@ -177,13 +177,13 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
   Widget _openArticle(context) {
     if (Platform.isIOS) {
       return CupertinoButton(
-        color: Colors.kBlack,
+        color: Colors.black,
         borderRadius: BorderRadius.circular(22),
         pressedOpacity: 0.5,
         child: Text(
           Strings.of(context).readArticle.toUpperCase(),
-          style: Styles.kTextMedium.copyWith(
-            color: Colors.kWhite,
+          style: Styles.textMedium.copyWith(
+            color: Colors.white,
             fontSize: 12,
           ),
         ),
@@ -196,15 +196,15 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(22),
         ),
-        color: Colors.kBlack,
+        color: Colors.black,
         onPressed: _onReadArticle,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               Strings.of(context).readArticle.toUpperCase(),
-              style: Styles.kTextMedium.copyWith(
-                color: Colors.kWhite,
+              style: Styles.textMedium.copyWith(
+                color: Colors.white,
                 fontSize: 12,
               ),
             ),
@@ -213,7 +213,7 @@ class _ArticlePreviewScreenState extends State<ArticlePreviewScreen> {
             ),
             Icon(
               Icons.arrow_forward,
-              color: Colors.kWhite,
+              color: Colors.white,
             )
           ],
         ),

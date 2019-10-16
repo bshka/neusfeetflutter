@@ -1,87 +1,561 @@
 {
+  "@@last_modified": "2019-10-14T16:48:32.439838",
   "appName": "NeusFeet",
   "@appName": {
     "description": "Application name",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "home": "Home",
   "@home": {
     "description": "Home tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "search": "Search",
   "@search": {
     "description": "Search tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "settings": "Settings",
   "@settings": {
     "description": "Settings tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "bookmarks": "Bookmarks",
   "@bookmarks": {
     "description": "Bookmarks tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "searchHint": "Search news…",
   "@searchHint": {
     "description": "Search hint",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "readArticle": "Read article",
   "@readArticle": {
     "description": "Read article button",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "emptyArticles": "Nothing to show…",
   "@emptyArticles": {
     "description": "Empty view text",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "category": "Category",
   "@category": {
     "description": "Category tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "country": "Country",
   "@country": {
     "description": "Country tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "language": "Language",
   "@language": {
     "description": "Language tab",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "openInBrowser": "Open in browser",
   "@openInBrowser": {
     "description": "Open in browser button",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "bookmarkAdded": "Bookmark added!",
   "@bookmarkAdded": {
     "description": "Bookmark added message",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "bookmarkRemoved": "Bookmark removed!",
   "@bookmarkRemoved": {
     "description": "Bookmark removed message",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "bookmarksEmptyText": "There are still no bookmarks. Try to add one first!",
   "@bookmarksEmptyText": {
     "description": "No bookmarks message",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
   "homeEmptyText": "There are no headlines. Try again later.",
   "@homeEmptyText": {
     "description": "No headlines message",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
   },
-  "searchEmptyText": "Can\' find news with for this request. Try different keywords.",
+  "searchEmptyText": "Can't find news with for this request. Try different keywords.",
   "@searchEmptyText": {
     "description": "No news in search message",
-    "type": "text"
+    "type": "text",
+    "placeholders": {}
+  },
+  "all": "All",
+  "@all": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "businessCategory": "Business",
+  "@businessCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "entertainmentCategory": "Entertaiment",
+  "@entertainmentCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "generalCategory": "General",
+  "@generalCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "healthCategory": "Health",
+  "@healthCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "scienceCategory": "Science",
+  "@scienceCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sportsCategory": "Sports",
+  "@sportsCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "technologyCategory": "Technology",
+  "@technologyCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "arabicLanguage": "Arabic",
+  "@arabicLanguage": {
+    "description": "Arabic language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "germanLanguage": "German",
+  "@germanLanguage": {
+    "description": "German language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "englishLanguage": "English",
+  "@englishLanguage": {
+    "description": "English language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "spanishLanguage": "Spanish",
+  "@spanishLanguage": {
+    "description": "Spanish language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "frenchLanguage": "French",
+  "@frenchLanguage": {
+    "description": "French language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hebrewLanguage": "Hebrew",
+  "@hebrewLanguage": {
+    "description": "Hebrew language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "italianLanguage": "Italian",
+  "@italianLanguage": {
+    "description": "Italian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "dutchLanguage": "Dutch",
+  "@dutchLanguage": {
+    "description": "Dutch language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "norwegianLanguage": "Norwegian",
+  "@norwegianLanguage": {
+    "description": "Norwegian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "portugueseLanguage": "Portuguese",
+  "@portugueseLanguage": {
+    "description": "Portuguese language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "russianLanguage": "Russian",
+  "@russianLanguage": {
+    "description": "Russian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "northernSamiLanguage": "Northern Sami",
+  "@northernSamiLanguage": {
+    "description": "Northern Sami language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "urduLanguage": "Urdu",
+  "@urduLanguage": {
+    "description": "Urdu language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chineseLanguage": "Chinese",
+  "@chineseLanguage": {
+    "description": "Chinese language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "aeCountry": "United Arab Emirates",
+  "@aeCountry": {
+    "description": "United Arab Emirates",
+    "type": "text",
+    "placeholders": {}
+  },
+  "arCountry": "Argentina",
+  "@arCountry": {
+    "description": "Argentina",
+    "type": "text",
+    "placeholders": {}
+  },
+  "atCountry": "Austria",
+  "@atCountry": {
+    "description": "Austria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "auCountry": "Australia",
+  "@auCountry": {
+    "description": "Australia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "beCountry": "Belgium",
+  "@beCountry": {
+    "description": "Belgium",
+    "type": "text",
+    "placeholders": {}
+  },
+  "bgCountry": "Bulgaria",
+  "@bgCountry": {
+    "description": "Bulgaria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "brCountry": "Brazil",
+  "@brCountry": {
+    "description": "Brazil",
+    "type": "text",
+    "placeholders": {}
+  },
+  "caCountry": "Canada",
+  "@caCountry": {
+    "description": "Canada",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chCountry": "Switzerland",
+  "@chCountry": {
+    "description": "Switzerland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cnCountry": "China",
+  "@cnCountry": {
+    "description": "China",
+    "type": "text",
+    "placeholders": {}
+  },
+  "coCountry": "Colombia",
+  "@coCountry": {
+    "description": "Colombia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cuCountry": "Cuba",
+  "@cuCountry": {
+    "description": "Cuba",
+    "type": "text",
+    "placeholders": {}
+  },
+  "czCountry": "Czech Republic",
+  "@czCountry": {
+    "description": "Czech Republic",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deCountry": "Germany",
+  "@deCountry": {
+    "description": "Germany",
+    "type": "text",
+    "placeholders": {}
+  },
+  "egCountry": "Egypt",
+  "@egCountry": {
+    "description": "Egypt",
+    "type": "text",
+    "placeholders": {}
+  },
+  "frCountry": "France",
+  "@frCountry": {
+    "description": "France",
+    "type": "text",
+    "placeholders": {}
+  },
+  "gbCountry": "United Kingdom",
+  "@gbCountry": {
+    "description": "United Kingdom",
+    "type": "text",
+    "placeholders": {}
+  },
+  "grCountry": "Greece",
+  "@grCountry": {
+    "description": "Greece",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hkCountry": "Hong Kong",
+  "@hkCountry": {
+    "description": "Hong Kong",
+    "type": "text",
+    "placeholders": {}
+  },
+  "huCountry": "Hungary",
+  "@huCountry": {
+    "description": "Hungary",
+    "type": "text",
+    "placeholders": {}
+  },
+  "idCountry": "Indonesia",
+  "@idCountry": {
+    "description": "Indonesia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ieCountry": "Ireland",
+  "@ieCountry": {
+    "description": "Ireland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ilCountry": "Israel",
+  "@ilCountry": {
+    "description": "Israel",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inCountry": "India",
+  "@inCountry": {
+    "description": "India",
+    "type": "text",
+    "placeholders": {}
+  },
+  "itCountry": "Italy",
+  "@itCountry": {
+    "description": "Italy",
+    "type": "text",
+    "placeholders": {}
+  },
+  "jpCountry": "Japan",
+  "@jpCountry": {
+    "description": "Japan",
+    "type": "text",
+    "placeholders": {}
+  },
+  "krCountry": "Korea, Republic of",
+  "@krCountry": {
+    "description": "Korea, Republic of",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ltCountry": "Lithuania",
+  "@ltCountry": {
+    "description": "Lithuania",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lvCountry": "Latvia",
+  "@lvCountry": {
+    "description": "Latvia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "maCountry": "Morocco",
+  "@maCountry": {
+    "description": "Morocco",
+    "type": "text",
+    "placeholders": {}
+  },
+  "mxCountry": "Mexico",
+  "@mxCountry": {
+    "description": "Mexico",
+    "type": "text",
+    "placeholders": {}
+  },
+  "myCountry": "Malaysia",
+  "@myCountry": {
+    "description": "Malaysia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ngCountry": "Nigeria",
+  "@ngCountry": {
+    "description": "Nigeria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nlCountry": "Netherlands",
+  "@nlCountry": {
+    "description": "Netherlands",
+    "type": "text",
+    "placeholders": {}
+  },
+  "noCountry": "Norway",
+  "@noCountry": {
+    "description": "Norway",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nzCountry": "New Zealand",
+  "@nzCountry": {
+    "description": "New Zealand",
+    "type": "text",
+    "placeholders": {}
+  },
+  "phCountry": "Philippines",
+  "@phCountry": {
+    "description": "Philippines",
+    "type": "text",
+    "placeholders": {}
+  },
+  "plCountry": "Poland",
+  "@plCountry": {
+    "description": "Poland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ptCountry": "Portugal",
+  "@ptCountry": {
+    "description": "Portugal",
+    "type": "text",
+    "placeholders": {}
+  },
+  "roCountry": "Romania",
+  "@roCountry": {
+    "description": "Romania",
+    "type": "text",
+    "placeholders": {}
+  },
+  "rsCountry": "Serbia",
+  "@rsCountry": {
+    "description": "Serbia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ruCountry": "Russia",
+  "@ruCountry": {
+    "description": "Russia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "saCountry": "Saudi Arabia",
+  "@saCountry": {
+    "description": "Saudi Arabia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "seCountry": "Sweden",
+  "@seCountry": {
+    "description": "Sweden",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sgCountry": "Singapore",
+  "@sgCountry": {
+    "description": "Singapore",
+    "type": "text",
+    "placeholders": {}
+  },
+  "siCountry": "Slovenia",
+  "@siCountry": {
+    "description": "Slovenia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "skCountry": "Slovakia",
+  "@skCountry": {
+    "description": "Slovakia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "thCountry": "Thailand",
+  "@thCountry": {
+    "description": "Thailand",
+    "type": "text",
+    "placeholders": {}
+  },
+  "trCountry": "Turkey",
+  "@trCountry": {
+    "description": "Turkey",
+    "type": "text",
+    "placeholders": {}
+  },
+  "twCountry": "Taiwan, Province of China",
+  "@twCountry": {
+    "description": "Taiwan, Province of China",
+    "type": "text",
+    "placeholders": {}
+  },
+  "uaCountry": "Ukraine",
+  "@uaCountry": {
+    "description": "Ukraine",
+    "type": "text",
+    "placeholders": {}
+  },
+  "usCountry": "United States",
+  "@usCountry": {
+    "description": "United States",
+    "type": "text",
+    "placeholders": {}
+  },
+  "veCountry": "Venezuela, Bolivarian Republic of",
+  "@veCountry": {
+    "description": "Venezuela, Bolivarian Republic of",
+    "type": "text",
+    "placeholders": {}
+  },
+  "zaCountry": "South Africa",
+  "@zaCountry": {
+    "description": "South Africa",
+    "type": "text",
+    "placeholders": {}
   }
 }

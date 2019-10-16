@@ -12,9 +12,9 @@ class MyAppAndroid extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.kPrimary,
-        primaryColorDark: Colors.kPrimaryDark,
-        accentColor: Colors.kAccent,
+        primaryColor: Colors.primary,
+        primaryColorDark: Colors.primaryDark,
+        accentColor: Colors.accent,
       ),
       onGenerateTitle: (context) => Strings.of(context).appName,
       localizationsDelegates: [

@@ -49,7 +49,7 @@ class _BookmarkButtoniOS extends StatelessWidget {
         pressedOpacity: 0.5,
         child: Icon(
           addedToBookmarks ? Icons.bookmark : Icons.bookmark_border,
-          color: Colors.kBlack,
+          color: Colors.black,
           size: 24,
         ),
         onPressed: onTap);

@@ -12,8 +12,8 @@ class MyAppiOS extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
       theme: CupertinoTheme.of(context).copyWith(
-        primaryColor: Colors.kPrimary,
-        primaryContrastingColor: Colors.kPrimaryDark,
+        primaryColor: Colors.primary,
+        primaryContrastingColor: Colors.primaryDark,
       ),
       onGenerateTitle: (context) => Strings.of(context).appName,
       localizationsDelegates: [

@@ -46,7 +46,7 @@ class ArticleCard extends StatelessWidget {
                   tag: 'image' + article.toString(),
                   child: FadeInImage.assetNetwork(
                     height: 190,
-                    placeholder: Images.kPlaceholder,
+                    placeholder: Images.placeholder,
                     image: article.urlToImage ?? '',
                     fit: BoxFit.cover,
                     fadeInDuration: Duration(milliseconds: 100),
@@ -66,8 +66,8 @@ class ArticleCard extends StatelessWidget {
                             article.title ?? '',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: Styles.kTextMedium.copyWith(
-                              color: Colors.kBlack,
+                            style: Styles.textMedium.copyWith(
+                              color: Colors.black,
                               fontSize: 18,
                             ),
                           ),
@@ -89,8 +89,8 @@ class ArticleCard extends StatelessWidget {
                           article.sourceName != null
                               ? article.sourceName.toUpperCase()
                               : '',
-                          style: Styles.kTextRegular.copyWith(
-                            color: Colors.kMartini,
+                          style: Styles.textRegular.copyWith(
+                            color: Colors.martini,
                             fontSize: 14,
                           ),
                         ),
@@ -101,8 +101,8 @@ class ArticleCard extends StatelessWidget {
                           child: Text(
                             DateFormat('dd.MM.yyyy')
                                 .format(article.publishedAt ?? DateTime.now()),
-                            style: Styles.kTextLight.copyWith(
-                              color: Colors.kFrenchGray,
+                            style: Styles.textLight.copyWith(
+                              color: Colors.frenchGray,
                               fontSize: 14,
                             ),
                           ),
@@ -116,8 +116,8 @@ class ArticleCard extends StatelessWidget {
                       article.description ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Styles.kTextLight.copyWith(
-                        color: Colors.kManatee,
+                      style: Styles.textLight.copyWith(
+                        color: Colors.manatee,
                         fontSize: 18,
                       ),
                     ),

@@ -38,10 +38,10 @@ class _SearchBarState extends State<SearchBar> {
             contentPadding: EdgeInsets.all(0),
             prefixIcon: Icon(
               Icons.search,
-              color: Colors.kMartini,
+              color: Colors.martini,
             ),
             hintStyle: TextStyle(
-              color: Colors.kMartini,
+              color: Colors.martini,
             ),
             hintText: Strings.of(context).searchHint,
             border: OutlineInputBorder(
@@ -65,7 +65,7 @@ class _SearchBarState extends State<SearchBar> {
             offset: Offset(0, 2),
           )
         ],
-        color: Colors.kWhite,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
@@ -80,7 +80,7 @@ class _SearchBarState extends State<SearchBar> {
         textInputAction: TextInputAction.search,
         prefix: Icon(
           Icons.search,
-          color: Colors.kMartini,
+          color: Colors.martini,
         ),
         clearButtonMode: OverlayVisibilityMode.editing,
       ),

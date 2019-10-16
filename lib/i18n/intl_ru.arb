@@ -68,8 +68,8 @@
   "@bookmarkRemoved": {
     "description": "Bookmark removed message",
     "type": "text"
-  }
-  "bookmarksEmptyText": "Вы пока не добавили ни одной закладки. Добавьте, и они появятся здесь.",
+  },
+  "bookmarksEmptyText": "Вы пока не добавили ни одной закладки. Добавьте, и они появились здесь.",
   "@bookmarksEmptyText": {
     "description": "No bookmarks message",
     "type": "text"
@@ -83,5 +83,461 @@
   "@searchEmptyText": {
     "description": "No news in search message",
     "type": "text"
+  },
+  "all": "Все",
+  "@all": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "businessCategory": "Бизнесс",
+  "@businessCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "entertainmentCategory": "Развлечения",
+  "@entertainmentCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "generalCategory": "Общие",
+  "@generalCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "healthCategory": "Здоровье",
+  "@healthCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "scienceCategory": "Наука",
+  "@scienceCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sportsCategory": "Спорт",
+  "@sportsCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "technologyCategory": "Технологии",
+  "@technologyCategory": {
+    "description": "No filter in settings",
+    "type": "text",
+    "placeholders": {}
+  },
+  "arabicLanguage": "Арабский",
+  "@arabicLanguage": {
+    "description": "Arabic language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "germanLanguage": "Немецкий",
+  "@germanLanguage": {
+    "description": "German language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "englishLanguage": "Английский",
+  "@englishLanguage": {
+    "description": "English language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "spanishLanguage": "Испанский",
+  "@spanishLanguage": {
+    "description": "Spanish language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "frenchLanguage": "Французский",
+  "@frenchLanguage": {
+    "description": "French language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hebrewLanguage": "Иврит",
+  "@hebrewLanguage": {
+    "description": "Hebrew language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "italianLanguage": "Итальянский",
+  "@italianLanguage": {
+    "description": "Italian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "dutchLanguage": "Нидерландский",
+  "@dutchLanguage": {
+    "description": "Dutch language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "norwegianLanguage": "Норвежский",
+  "@norwegianLanguage": {
+    "description": "Norwegian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "portugueseLanguage": "Португальский",
+  "@portugueseLanguage": {
+    "description": "Portuguese language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "russianLanguage": "Русский",
+  "@russianLanguage": {
+    "description": "Russian language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "northernSamiLanguage": "Северный саам",
+  "@northernSamiLanguage": {
+    "description": "Northern Sami language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "urduLanguage": "Урду",
+  "@urduLanguage": {
+    "description": "Urdu language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chineseLanguage": "Китайский",
+  "@chineseLanguage": {
+    "description": "Chinese language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "aeCountry": "Объединенные Арабские Эмираты",
+  "@aeCountry": {
+    "description": "United Arab Emirates",
+    "type": "text",
+    "placeholders": {}
+  },
+  "arCountry": "Аргентина",
+  "@arCountry": {
+    "description": "Argentina",
+    "type": "text",
+    "placeholders": {}
+  },
+  "atCountry": "Австрия",
+  "@atCountry": {
+    "description": "Austria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "auCountry": "Австралия",
+  "@auCountry": {
+    "description": "Australia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "beCountry": "Бельгия",
+  "@beCountry": {
+    "description": "Belgium",
+    "type": "text",
+    "placeholders": {}
+  },
+  "bgCountry": "Болгария",
+  "@bgCountry": {
+    "description": "Bulgaria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "brCountry": "Бразилия",
+  "@brCountry": {
+    "description": "Brazil",
+    "type": "text",
+    "placeholders": {}
+  },
+  "caCountry": "Канада",
+  "@caCountry": {
+    "description": "Canada",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chCountry": "Швейцария",
+  "@chCountry": {
+    "description": "Switzerland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cnCountry": "Китай",
+  "@cnCountry": {
+    "description": "China",
+    "type": "text",
+    "placeholders": {}
+  },
+  "coCountry": "Колумбия",
+  "@coCountry": {
+    "description": "Colombia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cuCountry": "Куба",
+  "@cuCountry": {
+    "description": "Cuba",
+    "type": "text",
+    "placeholders": {}
+  },
+  "czCountry": "Республика Чехия",
+  "@czCountry": {
+    "description": "Czech Republic",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deCountry": "Германия",
+  "@deCountry": {
+    "description": "Germany",
+    "type": "text",
+    "placeholders": {}
+  },
+  "egCountry": "Египет",
+  "@egCountry": {
+    "description": "Egypt",
+    "type": "text",
+    "placeholders": {}
+  },
+  "frCountry": "Франция",
+  "@frCountry": {
+    "description": "France",
+    "type": "text",
+    "placeholders": {}
+  },
+  "gbCountry": "Соединенное Королевство",
+  "@gbCountry": {
+    "description": "United Kingdom",
+    "type": "text",
+    "placeholders": {}
+  },
+  "grCountry": "Греция",
+  "@grCountry": {
+    "description": "Greece",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hkCountry": "Гонконг",
+  "@hkCountry": {
+    "description": "Hong Kong",
+    "type": "text",
+    "placeholders": {}
+  },
+  "huCountry": "Венгрия",
+  "@huCountry": {
+    "description": "Hungary",
+    "type": "text",
+    "placeholders": {}
+  },
+  "idCountry": "Индонезия",
+  "@idCountry": {
+    "description": "Indonesia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ieCountry": "Ирландия",
+  "@ieCountry": {
+    "description": "Ireland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ilCountry": "Израиль",
+  "@ilCountry": {
+    "description": "Israel",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inCountry": "Индия",
+  "@inCountry": {
+    "description": "India",
+    "type": "text",
+    "placeholders": {}
+  },
+  "itCountry": "Италия",
+  "@itCountry": {
+    "description": "Italy",
+    "type": "text",
+    "placeholders": {}
+  },
+  "jpCountry": "Япония",
+  "@jpCountry": {
+    "description": "Japan",
+    "type": "text",
+    "placeholders": {}
+  },
+  "krCountry": "Корея, Республика",
+  "@krCountry": {
+    "description": "Korea, Republic of",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ltCountry": "Литва",
+  "@ltCountry": {
+    "description": "Lithuania",
+    "type": "text",
+    "placeholders": {}
+  },
+  "lvCountry": "Латвия",
+  "@lvCountry": {
+    "description": "Latvia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "maCountry": "Марокко",
+  "@maCountry": {
+    "description": "Morocco",
+    "type": "text",
+    "placeholders": {}
+  },
+  "mxCountry": "Мексика",
+  "@mxCountry": {
+    "description": "Mexico",
+    "type": "text",
+    "placeholders": {}
+  },
+  "myCountry": "Малайзия",
+  "@myCountry": {
+    "description": "Malaysia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ngCountry": "Нигерия",
+  "@ngCountry": {
+    "description": "Nigeria",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nlCountry": "Нидерланды",
+  "@nlCountry": {
+    "description": "Netherlands",
+    "type": "text",
+    "placeholders": {}
+  },
+  "noCountry": "Норвегия",
+  "@noCountry": {
+    "description": "Norway",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nzCountry": "Новая Зеландия",
+  "@nzCountry": {
+    "description": "New Zealand",
+    "type": "text",
+    "placeholders": {}
+  },
+  "phCountry": "Филиппины",
+  "@phCountry": {
+    "description": "Philippines",
+    "type": "text",
+    "placeholders": {}
+  },
+  "plCountry": "Польша",
+  "@plCountry": {
+    "description": "Poland",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ptCountry": "Португалия",
+  "@ptCountry": {
+    "description": "Portugal",
+    "type": "text",
+    "placeholders": {}
+  },
+  "roCountry": "Румыния",
+  "@roCountry": {
+    "description": "Romania",
+    "type": "text",
+    "placeholders": {}
+  },
+  "rsCountry": "Сербия",
+  "@rsCountry": {
+    "description": "Serbia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ruCountry": "Россия",
+  "@ruCountry": {
+    "description": "Russia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "saCountry": "Саудовская Аравия",
+  "@saCountry": {
+    "description": "Saudi Arabia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "seCountry": "Швеция",
+  "@seCountry": {
+    "description": "Sweden",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sgCountry": "Сингапур",
+  "@sgCountry": {
+    "description": "Singapore",
+    "type": "text",
+    "placeholders": {}
+  },
+  "siCountry": "Словения",
+  "@siCountry": {
+    "description": "Slovenia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "skCountry": "Словакия",
+  "@skCountry": {
+    "description": "Slovakia",
+    "type": "text",
+    "placeholders": {}
+  },
+  "thCountry": "Таиланд",
+  "@thCountry": {
+    "description": "Thailand",
+    "type": "text",
+    "placeholders": {}
+  },
+  "trCountry": "Турция",
+  "@trCountry": {
+    "description": "Turkey",
+    "type": "text",
+    "placeholders": {}
+  },
+  "twCountry": "Тайвань, провинция Китая",
+  "@twCountry": {
+    "description": "Taiwan, Province of China",
+    "type": "text",
+    "placeholders": {}
+  },
+  "uaCountry": "Украина",
+  "@uaCountry": {
+    "description": "Ukraine",
+    "type": "text",
+    "placeholders": {}
+  },
+  "usCountry": "Соединенные Штаты",
+  "@usCountry": {
+    "description": "United States",
+    "type": "text",
+    "placeholders": {}
+  },
+  "veCountry": "Венесуэла, Боливарианская Республика",
+  "@veCountry": {
+    "description": "Venezuela, Bolivarian Republic of",
+    "type": "text",
+    "placeholders": {}
+  },
+  "zaCountry": "Южная Африка",
+  "@zaCountry": {
+    "description": "South Africa",
+    "type": "text",
+    "placeholders": {}
   }
 }

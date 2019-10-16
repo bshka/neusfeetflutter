@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
 
-TextStyle kTextRegular = TextStyle(
+TextStyle textRegular = TextStyle(
   fontFamily: 'SFUI',
 );
 
-TextStyle kTextMedium = TextStyle(
+TextStyle textMedium = TextStyle(
   fontFamily: 'SFUI',
   fontWeight: FontWeight.w500,
 );
 
-TextStyle kTextLight = TextStyle(
+TextStyle textLight = TextStyle(
   fontFamily: 'SFUI',
   fontWeight: FontWeight.w300,
 );
 
-TextStyle kTextBold = TextStyle(
+TextStyle textBold = TextStyle(
   fontFamily: 'SFUI',
   fontWeight: FontWeight.w700,
 );
